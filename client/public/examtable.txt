@@ -1,0 +1,5 @@
+Hello user 
+
+This is the Exam timetable
+
+Bye.

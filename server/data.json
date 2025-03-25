@@ -1,0 +1,92 @@
+{
+  "hi": {
+    "text": "How can I assist you?",
+    "options": [
+      "1. Staff Details",
+      "2. Internal Exam Time Table",
+      "3. Class Timetable",
+      "4. Live Recorded Classes",
+      "5. How to Apply for Leave",
+      "6. How to Get a Gate Pass",
+      "7. Recent Announcements"
+    ]
+  },
+  "check order status": {
+    "text": "Here are your options:",
+    "options": [
+      {
+        "label": "1. Download Report Data",
+        "type": "download",
+        "url": "sample.txt"
+      },
+      {
+        "label": "2. Download PDF View",
+        "type": "download",
+        "url": "sdfample.txt"
+      },
+      {
+        "label": "3. Download Content",
+        "type": "download",
+        "url": "dsample.txt"
+      }
+    ]
+  },
+  "internal exam time table": {
+    "text": "Here is the Internal Exam Time Table:",
+    "options": [
+      "1. View Exam Schedule",
+      "2. Download Exam Timetable",
+      "3. Contact Exam Coordinator"
+    ]
+  },
+  "class timetable": {
+    "text": "Here is the Class Timetable:",
+    "options": [
+      "1. View Class Schedule",
+      "2. Download Timetable",
+      "3. Contact Class Coordinator"
+    ]
+  },
+  "live recorded classes": {
+    "text": "Access Live & Recorded Classes:",
+    "options": [
+      {"url":"https://a.impartus.com/login/#/"}
+    ]
+  },
+  "how to apply for leave": {
+    "text": "Follow these steps to apply for leave:",
+    "options": [
+      "1. Submit Leave Request Online",
+      "2. Check Leave Policy",
+      "3. Contact HR"
+    ]
+  },
+  "how to get a gate pass": {
+    "text": "Follow these steps to get a gate pass:",
+    "options": [
+      "1. Apply for Gate Pass Online",
+      "2. Check Gate Pass Policy",
+      "3. Contact Security Office"
+    ]
+  },
+  "recent announcements": {
+    "text": "Here are the recent announcements:",
+    "options": [
+      "1. View Latest Announcements",
+      "2. Download Notices",
+      "3. Contact Admin",
+      "1. View Latest Announcements",
+      "2. Download Notices",
+      "3. Contact Admin",
+      "1. View Latest Announcements",
+      "2. Download Notices",
+      "3. Contact Admin",
+      "1. View Latest Announcements",
+      "2. Download Notices",
+      "3. Contact Admin"
+    ]
+  },
+  "default": {
+    "text": "I didn't understand that. Try saying 'Hi'."
+  }
+}
