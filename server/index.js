@@ -1,4 +1,6 @@
 const express = require("express");
+const fs = require("fs");
+const path = require('path');
 const cors = require("cors");
 const mongoose = require("mongoose");
 const multer = require("multer");
@@ -10,8 +12,24 @@ const { HelpCategory, Option } = require("./schema"); // Importing schema
 const {dbConnection, conn} = require('./db-connection')
 
 const app = express();
+
+// Constant variables
+const PORT = process.env.SERVER_PORT;
+
+// Project Environment 
+const NODE_ENV = process.env.NODE_ENV || 'DEV'; 
+
 app.use(express.json());
 app.use(cors()); // Enable CORS for frontend requests
+
+// Static file declaration
+app.use('/static', express.static(path.join(`${__dirname}/../client/build/static`)));
+app.use('/images', express.static(path.join(`${__dirname}/../client/build/images`)));
+app.use('/favicon/favicon.ico', (req, res) => {
+  const favicon = fs.readFileSync(path.join(__dirname, '/../client/build/favicon/favicon.ico'));
+  return res.send(favicon);
+});
+app.use('/images', express.static(path.join(`${__dirname}/../client/build/favicon`)));
 
 // Initialize GridFS
 let gfs;
@@ -196,14 +214,28 @@ app.get("/file/:id", async (req, res) => {
 /** 
  * 📌 Delete File from GridFS 
  */
-app.delete("/file/:id", async (req, res) => {
+app.delete("/option/:optionId", async (req, res) => {
   try {
-    await gfs.files.deleteOne({ _id: new mongoose.Types.ObjectId(req.params.id) });
-    res.json({ message: "File deleted successfully" });
+    const option = await Option.findOne({ optionId: req.params.optionId });
+
+    if(option) {
+      await Option.deleteOne({optionId:option.optionId});
+      await gfs.files.deleteOne({ _id: new mongoose.Types.ObjectId(option) });
+      return res.json({ message: "File deleted successfully" });
+    }
+    return res.json({message:"Option not exists"});
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
+
+// DIT Environment
+if (['DIT', 'PROD'].includes(NODE_ENV)) { 
+  const indexHTMLContent = fs.readFileSync(path.join(`${__dirname}/../client/build/index.html`), 'utf-8');
+  app.all('*', (req, res) => {
+    res.send(indexHTMLContent);
+  });
+}
 
 dbConnection().then((message) => { 
     
