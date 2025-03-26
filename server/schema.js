@@ -17,7 +17,20 @@ const helpCategorySchema = new Schema({
   options: [{ type: Types.ObjectId, ref: "Option" }], // Reference to Option documents
 });
 
+const adminSchema = new Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
+const AnnouncementSchema = new Schema({
+  title: { type: String, required: true },
+  content: { type: String, required: true },
+  createdAt: { type: Date, default: Date.now }
+});
+
 const HelpCategory = model("HelpCategory", helpCategorySchema);
 const Option = model("Option", optionSchema);
+const Admin = model("Admin", adminSchema, "admin");
+const Announcement = model("Announcement", AnnouncementSchema, "announcement");
 
-module.exports = { HelpCategory, Option };
+module.exports = { HelpCategory, Option, Admin, Announcement };

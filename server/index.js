@@ -8,7 +8,7 @@ const GridFsStorage = require("multer-gridfs-storage").GridFsStorage;
 const Grid = require("gridfs-stream");
 require ('dotenv').config ();
 
-const { HelpCategory, Option } = require("./schema"); // Importing schema
+const { HelpCategory, Option, Admin, Announcement } = require("./schema"); // Importing schema
 const {dbConnection, conn} = require('./db-connection')
 
 const app = express();
@@ -82,6 +82,86 @@ const upload = multer({ storage });
 //       res.status(500).json({ error: error.message });
 //     }
 //   });
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+console.log(username, password);
+
+    // Check if user exists in Admin collection
+    const admin = await Admin.findOne({ username, password });
+    console.log( admin);
+    
+
+    if (!admin) {
+      return res.status(401).json({ message: "Invalid username or password" });
+    }
+
+    // Generate JWT Token
+    // const token = jwt.sign({ username: admin.username, id: admin._id }, SECRET_KEY, { expiresIn: "1h" });
+
+    res.json({ message: "Login successful" });
+
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/** 🔹 Get all Announcements */
+app.get("/announcements", async (req, res) => {
+  try {
+    const announcements = await Announcement.find(); // Fetch latest first
+    console.log(announcements,'mmm');
+    
+    res.json(announcements);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/** 🔹 Create a New Announcement */
+app.post("/add/announcements", async (req, res) => {
+  try {
+    const { title, content } = req.body;
+    if (!title || !content) {
+      return res.status(400).json({ message: "Title and content are required" });
+    }
+
+    const newAnnouncement = new Announcement({ title, content });
+    await newAnnouncement.save();
+    res.json({ message: "Announcement added successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/** 🔹 Delete an Announcement */
+app.delete("/announcement/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await Announcement.findByIdAndDelete(id);
+    res.json({ message: "Announcement deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+app.get("/files/:optionId", async (req, res) => {
+  try {
+    const { optionId } = req.params;
+    console.log(optionId);
+    
+    const option = await Option.findOne({ optionId });
+    console.log(option);
+    
+
+    if (!option || !option.fileId) {
+      return res.status(404).json({ message: "No file found" });
+    }
+
+    res.json({ url: option.url });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 
 app.get("/category/:category", async (req, res) => {
   try {
@@ -217,6 +297,7 @@ app.get("/file/:id", async (req, res) => {
 app.delete("/option/:optionId", async (req, res) => {
   try {
     const option = await Option.findOne({ optionId: req.params.optionId });
+console.log(option);
 
     if(option) {
       await Option.deleteOne({optionId:option.optionId});

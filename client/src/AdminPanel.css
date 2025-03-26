@@ -3,6 +3,7 @@
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   gap: 20px;
   padding: 20px;
@@ -15,6 +16,12 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: 0.3s;
+  border: 2px solid #0dae85;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .card:hover {
@@ -23,16 +30,17 @@
 
 .modal {
   position: fixed;
-  top: 50%;
+  top: 68%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
+  background-color: #efeded;
+  padding: 65px;
   border-radius: 8px;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 17px;
+  width:40%;
 }
 
 button {
@@ -50,4 +58,86 @@ button:hover {
 button:disabled {
   background: #ccc;
   cursor: not-allowed;
+}
+.btn-container{
+  display: flex;
+  justify-content: space-between;
+}
+.card-flex-container{
+  display: flex;
+}
+.announcement-tile{
+    background: white;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    padding:20px;
+    border:2px solid #0dae85;
+}
+.announcement-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width:85%
+}
+.announcement-container-grid{
+  display: flex;
+  justify-content: center;
+  width:100%;
+}
+.add-btn{
+  background-color: #0dae85;
+  color: white;
+  margin-bottom:10px ;
+}
+.title-announcement{
+ text-align:center;
+ font-weight: bold;
+}
+.add-announ-container-btn{
+  display: flex;
+  justify-content: space-between;
+}
+.add-announ-btn{
+  background-color: #0dae85;
+  color: white;
+}
+.back-button {
+  display: flex;
+  align-items: center;
+  background-color: #0dae85;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  width: 12%;
+  color:white
+}
+
+.back-button svg {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .modal{
+    top: 68%;
+    width: 55%;
+  }
+  .container{
+    display: flex;
+    flex-direction: column;
+  }
+  .card-flex-container{
+    flex-direction: column;
+  }
+  .card{
+    margin-bottom: 20px;
+  }
+  .announcement-tile{
+    width: 100%;
+  }
+  .back-button{
+    width:41%;
+  }
 }
