@@ -559,7 +559,7 @@ const ChatBot = () => {
       // Check if the user sent "Hi"
       if (input.trim().toLowerCase() === "hi") {
         // Special handling for "Hi" message
-        const response = await axios.get(`http://localhost:3001/category/${input}`);
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/category/${input}`);
   
         // Add the message with the special class and image
         setMessages((prev) => [
@@ -580,7 +580,7 @@ const ChatBot = () => {
         ]);
       } else {
         // Regular handling for other messages
-        const response = await axios.get(`http://localhost:3001/category/${input}`);
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/category/${input}`);
   
         if (response.data.category === "default") {
           setMessages((prev) => [
@@ -642,7 +642,7 @@ const ChatBot = () => {
     try {
       setMessages((prev) => [...prev, { type: "user", text: optionText }]);
 
-      const response = await axios.get(`http://localhost:3001/option/${optionId}`);
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/option/${optionId}`);
       const { option, file } = response.data;
 
       if (optionText === "Recent Announcements") {
@@ -706,7 +706,7 @@ const ChatBot = () => {
                   <span style={{ marginRight: "5px" }}>🔗</span> 🎬 {msg.text}
                 </a>
               ) : msg.type === "download" ? (
-                <a href={`http://localhost:3001${msg.url}`} download={msg.fileName || "downloadedFile"} className="download-btn">
+                <a href={`${process.env.REACT_APP_SERVER_PREFIX}${msg.url}`} download={msg.fileName || "downloadedFile"} className="download-btn">
                   📥 {msg.text}
                 </a>
               ) : (

@@ -13,13 +13,13 @@ const FileUpload = ({ optionId, onClose }) => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    
+
     if (!file) return alert("Please select a file");
     setLoading(true);
     
     try {
       // Check if an existing file is associated with this optionId
-      await axios.delete(`http://localhost:3001/option/${optionId}`);
+      await axios.delete(`${process.env.REACT_APP_SERVER_PREFIX}/${optionId}`);
       
       // Upload new file
       const formData = new FormData();
@@ -27,7 +27,7 @@ const FileUpload = ({ optionId, onClose }) => {
       formData.append("optionId", optionId);
       formData.append("label", optionId === "opt2" ? "Internal Exam Timetable" : "Class Timetable");
       
-      await axios.post("http://localhost:3001/upload", formData, {
+      await axios.post(`${process.env.REACT_APP_SERVER_PREFIX}/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       
