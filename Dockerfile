@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:20-alpine
 
 # Set the working directory
 ENV NODE_ENV=${NODE_ENV:-DEV}
