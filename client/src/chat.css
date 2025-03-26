@@ -20,13 +20,26 @@ body {
     color: #24A0ED;
 }
 
+.icon-container{
+    display: flex;
+}
+
+.signup-icon{
+    position: relative;
+    cursor: pointer;
+    font-size: 24px;
+}
+
 .download-btn {
-  margin-left: 8px;
-  padding: 5px;
-  font-size: 14px;
-  border: none;
-  background: transparent;
-  cursor: pointer;
+    background-color: #0dae85;
+    margin-left: 8px;
+    padding: 5px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 7px;
+    color: white;
+    text-decoration: none;
 }
 
 .chatdiv{
@@ -203,6 +216,9 @@ body {
 .send-btn:hover {
     background: #099a76;
 }
+.notifications-dropdown.active{
+    min-width:380px;
+}
 
 /* Desktop View Adjustments */
 @media screen and (max-width: 600px) {
@@ -300,6 +316,7 @@ body {
     position: relative;
     cursor: pointer;
     font-size: 24px;
+    margin-right: 17px;
 }
 
 .badge {
@@ -355,7 +372,7 @@ body {
     right: 0;
     width: 250px;
     max-height: 200px; /* ✅ Set a fixed height */
-    background-color: #333;
+    background-color: #aeadad;
     color: white;
     border-radius: 8px;
     padding: 10px;
@@ -369,6 +386,8 @@ body {
 .notifications-dropdown.active {
     display: block;
     animation: fadeIn 0.3s ease-in-out;
+    min-height: 400px;
+    min-width: unset;
 }
 
 /* Individual Notification Item */
