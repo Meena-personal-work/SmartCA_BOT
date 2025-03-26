@@ -621,29 +621,29 @@ const ChatBot = () => {
   };
   
 
-    const formatContent = (content) => {
-    if (content.includes("1.")) {
+    // const formatContent = (content) => {
+    // if (content.includes("1.")) {
       
-      return (
-        <div>
-          <h3>Please check the details below :</h3>
-          {content.split(/(?=\d\.)/).map((line, index) => (
-            <div key={index}>
-               {line.trim()}
-            </div>
-          ))}
-        </div>
-      );
-    }
-    return content;
-  };
+    //   return (
+    //     <div>
+    //       <h3>Please check the details below :</h3>
+    //       {content.split(/(?=\d\.)/).map((line, index) => (
+    //         <div key={index}>
+    //            {line.trim()}
+    //         </div>
+    //       ))}
+    //     </div>
+    //   );
+    // }
+    // return content;
+    // };
 
   const handleOptionClick = async (optionId, optionText) => {
     try {
       setMessages((prev) => [...prev, { type: "user", text: optionText }]);
 
       const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/option/${optionId}`);
-      const { option, file } = response.data;
+      const { option } = response.data;
 
       if (optionText === "Recent Announcements") {
         setNotifications([{ text: option.content }]); // Store announcement inside the bell icon
