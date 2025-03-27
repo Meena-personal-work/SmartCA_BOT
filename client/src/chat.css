@@ -306,6 +306,9 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     cursor: pointer;
+    background-color: lightgray;
+    color:#0dae85;
+    border-radius: 27px;
 }
 
 .notification-item:hover {

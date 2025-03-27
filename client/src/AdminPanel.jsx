@@ -191,13 +191,12 @@ const FileUpload = ({ optionId, onClose }) => {
   const [loading, setLoading] = useState(false);
   const [existingFile, setExistingFile] = useState(null);
   const [refetch, setRefetch] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchFile = async () => {
       try {
         
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/files/${optionId}`);
+        const response = await axios.get(`${process.env.REACT_APP_SERVER_PREFIX}/files/file/${optionId}`);
         setExistingFile(response.data);
       } catch (error) {
         setExistingFile(null);
