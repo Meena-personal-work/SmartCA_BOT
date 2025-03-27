@@ -6,7 +6,7 @@ const conn = mongoose.connection;
 
 const dbConnection = () => {
   return new Promise ((resolve, reject) => {
-    mongoose.set ('strictQuery', false);
+    // mongoose.set ('strictQuery', false);
     mongoose
       .connect (`${process.env.DB_CONNECTION_STRING}`)
       .then (() => {

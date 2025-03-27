@@ -144,7 +144,7 @@ app.delete("/announcement/:id", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-app.get("/files/:optionId", async (req, res) => {
+app.get("/files/file/:optionId", async (req, res) => {
   try {
     const { optionId } = req.params;
     console.log(optionId);
