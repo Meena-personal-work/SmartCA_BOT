@@ -2,7 +2,7 @@ FROM node:20-alpine
 
 # Set the working directory
 ENV NODE_ENV=${NODE_ENV:-DEV}
-ENV REACT_APP_SERVER_PREFIX=${REACT_APP_SERVER_PREFIX:-https://your-app-sctoc.ondigitalocean.app}
+ENV REACT_APP_SERVER_PREFIX=${REACT_APP_SERVER_PREFIX:-https://smartca-bot-mguqu.ondigitalocean.app/}
 WORKDIR /app
 
 RUN mkdir -p -m 0600 /app/client && \
