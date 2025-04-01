@@ -58,30 +58,6 @@ const storage = new GridFsStorage({
 
 const upload = multer({ storage });
 
-// app.get("/category/:category", async (req, res) => {
-//     try {
-//       console.log("Requested Category:", req.params.category);
-  
-//       // Try to find the requested category
-//       let category = await HelpCategory.findOne({ category: req.params.category });
-  
-//       // If category is not found, fetch the default category response
-//       if (!category) {
-//         category = await HelpCategory.findOne({ category: "default" });
-  
-//         if (!category) {
-//           return res.status(404).json({ message: "No default response found in the database." });
-//         }
-//       }
-  
-//       // Fetch associated options
-//       const options = await Option.find({ optionId: { $in: category.options } });
-  
-//       res.json({ category: category.category, text: category.text, options });
-//     } catch (error) {
-//       res.status(500).json({ error: error.message });
-//     }
-//   });
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
