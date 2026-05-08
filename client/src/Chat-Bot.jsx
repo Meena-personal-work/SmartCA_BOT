@@ -204,7 +204,7 @@ const ChatBot = () => {
   {notifications.length > 0 && <span className="badge">{notifications.length}</span>}
   {showNotifications && (
     <div className="notifications-dropdown active">
-      <h5>📢 Recent Announcements</h5>
+      <h6>📢 Recent Announcements</h6>
       {notifications.length > 0 ? (
         notifications.map((announcement, index) => (
           <div key={index} className="notification-item">
