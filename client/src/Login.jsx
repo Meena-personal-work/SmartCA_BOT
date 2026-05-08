@@ -18,7 +18,7 @@ const Login = () => {
     try {
       const response = await axios.post(`${process.env.REACT_APP_SERVER_PREFIX}/login`, { username, password });
       console.log(response);
-      if(response.data.message = 'Login successful'){
+      if(response.data.message === 'Login successful'){
 
         toast.success("Login Successful! Redirecting...", { autoClose: 2000 });
       
