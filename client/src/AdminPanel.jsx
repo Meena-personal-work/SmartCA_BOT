@@ -384,15 +384,15 @@ const AnnouncementModal = ({ onClose }) => {
     }
   };
 
-  const handleDelete = async (id) => {
-    try {
-      await axios.delete(`${process.env.REACT_APP_SERVER_PREFIX}/announcements/${id}`);
-      toast.success("Announcement deleted");
-      fetchAnnouncements();
-    } catch (error) {
-      toast.error("Failed to delete");
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     await axios.delete(`${process.env.REACT_APP_SERVER_PREFIX}/announcements/${id}`);
+  //     toast.success("Announcement deleted");
+  //     fetchAnnouncements();
+  //   } catch (error) {
+  //     toast.error("Failed to delete");
+  //   }
+  // };
 
   return (
     <div className="modal-container">
