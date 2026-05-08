@@ -230,7 +230,7 @@ const FileUpload = ({ optionId, onClose }) => {
       
       console.log(response.data.message);
       
-      if(response.data.message = 'File uploaded successfully'){
+      if(response.data.message === 'File uploaded successfully'){
       
               toast.success("File uploaded successfully...", { autoClose: 2000 });
               setRefetch(!refetch);
